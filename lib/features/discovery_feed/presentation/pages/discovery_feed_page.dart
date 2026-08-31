@@ -19,6 +19,7 @@ class DiscoveryFeedScreen extends ConsumerStatefulWidget {
 
 class _DiscoveryFeedScreenState extends ConsumerState<DiscoveryFeedScreen> {
   int _selectedTab = 1;
+  int _currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +45,15 @@ class _DiscoveryFeedScreenState extends ConsumerState<DiscoveryFeedScreen> {
               return PageView.builder(
                 scrollDirection: Axis.vertical,
                 itemCount: products.length,
+                onPageChanged: (index) {
+                  setState(() => _currentPageIndex = index);
+                },
                 itemBuilder: (context, index) {
                   final product = products[index];
-                  return FeedTile(product: product);
+                  return FeedTile(
+                    product: product, 
+                    isCurrentPage: index == _currentPageIndex
+                  );
                 },
               );
             },
@@ -97,7 +104,9 @@ class _DiscoveryFeedScreenState extends ConsumerState<DiscoveryFeedScreen> {
 
 class FeedTile extends ConsumerStatefulWidget {
   final Product product;
-  const FeedTile({super.key, required this.product});
+  final bool isCurrentPage;
+
+  const FeedTile({super.key, required this.product, required this.isCurrentPage});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _FeedTileState();
@@ -137,7 +146,7 @@ class _FeedTileState extends ConsumerState<FeedTile> {
         GestureDetector(
           onDoubleTapDown: _onDoubleTapDown,
           onDoubleTap: () {}, // Requis pour que onDoubleTapDown s'active
-          child: FeedMediaView(product: product),
+          child: FeedMediaView(product: product, isCurrentPage: widget.isCurrentPage),
         ),
 
         // Overlay des cœurs animés apparus au double tap

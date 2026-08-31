@@ -1,10 +1,12 @@
+import 'package:e_shop/features/discovery_feed/presentation/widgets/feed_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:e_shop/features/catalog/domain/entities/product.dart';
 
 class FeedMediaView extends StatefulWidget {
   final Product product;
+  final bool isCurrentPage;
 
-  const FeedMediaView({super.key, required this.product});
+  const FeedMediaView({super.key, required this.product, this.isCurrentPage = true});
 
   @override
   State<FeedMediaView> createState() => _FeedMediaViewState();
@@ -12,17 +14,14 @@ class FeedMediaView extends StatefulWidget {
 
 class _FeedMediaViewState extends State<FeedMediaView> {
   int _currentImageIndex = 0;
-
+  
   @override
   Widget build(BuildContext context) {
     // CAS VIDÉO : Si le produit possède une vidéo
     if (widget.product.hasVideo) {
-      return Container(
-        color: Colors.black,
-        child: const Center(
-          child: Icon(Icons.play_circle_outline, color: Colors.white54, size: 64),
-          // TODO: Remplacer par le VideoPlayerController plus tard
-        ),
+      return FeedVideoPlayer(
+        videoUrl: widget.product.videoUrl!,
+        isCurrentPage: widget.isCurrentPage,
       );
     }
 
