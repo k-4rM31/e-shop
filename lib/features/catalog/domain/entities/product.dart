@@ -3,6 +3,7 @@ class Product {
   final String title;
   final String brand;
   final double price;
+  final String category;
   final String? videoUrl;
   final List<String> imageUrls;
   final String description;
@@ -13,6 +14,7 @@ class Product {
     required this.title,
     required this.brand,
     required this.price,
+    required this.category,
     this.videoUrl,
     required this.imageUrls,
     this.description = '',

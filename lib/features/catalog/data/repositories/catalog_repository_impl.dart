@@ -18,6 +18,7 @@ class CatalogRepositoryImpl implements ProductRepository {
         title: 'Sneakers Urban Flow',
         brand: 'Nike',
         price: 129.99,
+        category: 'shoes',
         videoUrl: 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
         imageUrls: ['https://images.unsplash.com/photo-1542291026-7eec264c27ff'],
         description: 'Baskets confortables parfaites pour un usage quotidien en ville.',
@@ -28,6 +29,7 @@ class CatalogRepositoryImpl implements ProductRepository {
         title: 'Veste Automne Minimaliste',
         brand: 'ZARA',
         price: 89.90,
+        category: 'shoes',
         videoUrl: 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
         imageUrls: ['https://images.unsplash.com/photo-1551028719-00167b16eac5'],
         description: 'Veste légère et stylée pour la mi-saison.',
@@ -38,6 +40,7 @@ class CatalogRepositoryImpl implements ProductRepository {
         title: 'Montre Classique Or',
         brand: 'Fossil',
         price: 159.00,
+        category: 'shoes',
         // Pas de vidéo ici pour tester le comportement "Image seule"
         imageUrls: [
           'https://images.unsplash.com/photo-1524592094714-0f0654e20314',
